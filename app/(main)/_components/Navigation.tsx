@@ -26,9 +26,11 @@ import { toast } from 'sonner';
 import { DocumentList } from './DocumentList';
 import { TrashBox } from './TrashBox';
 import { useSearch } from '@/hooks/use-search';
+import { useSettings } from '@/hooks/use-settings';
 
 const Navigation = () => {
   const search = useSearch();
+  const settings = useSettings();
   const pathname = usePathname();
   const isMobile = useMediaQuery('(max-width : 768px');
 
@@ -144,8 +146,17 @@ const Navigation = () => {
         </div>
         <div>
           <UserItem />
-          <Item icon={SearchIcon} label="Search" isSearch onClick={search.onOpen} />
-          <Item icon={SettingsIcon} label="settings" onClick={()=>{}} />
+          <Item
+            icon={SearchIcon}
+            label="Search"
+            isSearch
+            onClick={search.onOpen}
+          />
+          <Item
+            icon={SettingsIcon}
+            label="settings"
+            onClick={settings.onOpen}
+          />
           <Item onClick={handleCreate} label="New Page" icon={PlusIcon} />
         </div>
         <div className="mt-4 ">
